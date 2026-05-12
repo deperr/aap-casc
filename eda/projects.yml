@@ -1,0 +1,7 @@
+---
+
+eda_projects:
+  - name: Personal | EDA Demos (CaC)
+    description: Personal repository for EDA demos
+    url: https://github.com/deperr/eda-demos.git
+    organization: Default
