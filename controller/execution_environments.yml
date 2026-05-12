@@ -1,0 +1,15 @@
+---
+
+controller_execution_environments:
+
+  - name: Product Demos EE
+    description: EE for Ansible Product Demos (APD)
+    image: quay.io/ansible-product-demos/apd-ee-25:20260409
+
+  - name: ServiceNow EE
+    description: EE for ServiceNow automations
+    image: quay.io/dperrone/servicenow_ee:20251107
+
+  - name: VMWare EE
+    description: EE for VMWare automations
+    image: quay.io/dperrone/vmware_ee:20260122

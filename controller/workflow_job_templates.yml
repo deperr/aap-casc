@@ -1,0 +1,189 @@
+---
+
+controller_workflows:
+
+  #############################
+  # Linux Workflows
+  #############################
+
+  - name: Linux | Workflow | Patch and STIG
+    organization: Default
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    allow_simultaneous: true
+    labels: ['linux', 'security']
+    survey_enabled: true
+    survey_spec:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          required: true
+          default: web01.dperrone.dev
+    simplified_workflow_nodes:
+
+      - identifier: Sync Project
+        all_parents_must_converge: false
+        unified_job_template: "Test Repo New"
+        success_nodes: 
+          - Approve Workflow
+
+      - identifier: Sync Inventory
+        all_parents_must_converge: false
+        unified_job_template: "Red Hat Insights"
+        success_nodes: 
+          - Approve Workflow
+
+      - identifier: Approve Workflow
+        all_parents_must_converge: true
+        approval_node:
+          name: Simple approval node name
+          description: Approve this to proceed in workflow
+          timeout: 900
+        success_nodes:
+          - Patch Linux Hosts
+        
+      - identifier: Patch Linux Hosts
+        unified_job_template: "Linux | Patch Hosts"
+        success_nodes:
+          - STIG Hosts
+
+      - identifier: STIG Hosts
+        unified_job_template: "Linux | DISA STIG"
+
+  #############################
+  # ServiceNow Workflows
+  #############################
+
+  - name: ServiceNow | Workflow | Incident Lifecycle
+    organization: Default
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    allow_simultaneous: true
+    labels: ['itsm']
+    survey_enabled: true
+    survey_spec:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Enter Short Description
+          variable: incident_short_description
+          required: true
+          type: text
+          default: Incident created via AAP workflow.
+        - question_name: Describe the Incident
+          variable: incident_description
+          required: true
+          type: textarea
+          default: This is an incident created using AAP with the servicenow.itsm collection.
+        - question_name: Incident Urgency
+          variable: incident_urgency
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Incident Impact
+          variable: incident_impact
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Incident State
+          variable: incident_state
+          required: true
+          type: multiplechoice
+          choices:
+            - new
+            - in_progress
+            - on_hold
+            - resolved
+            - closed
+            - cancelled
+            - absent
+          default: new
+    simplified_workflow_nodes:
+      - identifier: Create Ticket
+        unified_job_template: "ServiceNow | Create Incident Ticket"
+        success_nodes:
+          - Update Ticket
+
+      - identifier: Update Ticket
+        unified_job_template: "ServiceNow | Update Incident Ticket"
+        success_nodes:
+          - Close Ticket
+
+      - identifier: Close Ticket
+        unified_job_template: "ServiceNow | Close Incident Ticket"
+
+
+  #############################
+  # Windows Workflows
+  #############################
+
+  # - name: Windows | Workflow [CaSC]
+  #   organization: Default
+  #   description: "Managed with CasC. Any changes may be overwritten."
+  #   allow_simultaneous: true
+  #   labels: ['windows']
+  #   survey_enabled: true
+  #   survey_spec:
+  #     name: ''
+  #     description: ''
+  #     spec:
+  #       - question_name: Server Name or Pattern
+  #         type: text
+  #         variable: _hosts
+  #         required: true
+  #         default: os_windows
+  #   simplified_workflow_nodes:
+
+  #     # Root Node A: Project Sync
+  #     - identifier: Sync Project
+  #       all_parents_must_converge: false
+  #       unified_job_template: "Test Repo New"
+  #       success_nodes: 
+  #         - Approve Workflow
+
+  #     # Root Node B: Inventory Sync
+  #     - identifier: Sync Inventory
+  #       all_parents_must_converge: false
+  #       unified_job_template: "Insights"
+  #       success_nodes: 
+  #         - Approve Workflow
+
+  #     # Child Node: Converges after both syncs complete
+  #     - identifier: Approve Workflow
+  #       all_parents_must_converge: true
+  #       approval_node:
+  #         name: Simple approval node name
+  #         description: Approve this to proceed in workflow
+  #         timeout: 900
+  #       success_nodes:
+  #         - Run script
+
+  #     - identifier: Run script
+  #       unified_job_template: "Windows | Query Services"
+  #       always_nodes:
+  #         - Second script
+  #       failure_nodes:
+  #         - Failure script
+  #       success_nodes:
+  #         - Success script
+
+  #     - identifier: Second script
+  #       unified_job_template: "Windows | Query Services]"
+
+  #     - identifier: Failure script
+  #       unified_job_template: "Windows | Query Services"
+      
+  #     - identifier: Success script
+  #       unified_job_template: "Windows | Query Services"
+
+  # The way that this works is the two nodes (project sync and inventory sync) are the root nodes
+  # since there's nothing feeding into them. The child notes go based on the identifer.

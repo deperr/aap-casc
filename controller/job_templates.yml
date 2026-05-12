@@ -1,0 +1,635 @@
+---
+
+controller_templates:
+
+  #############################
+  # Config as Code Templates
+  #############################
+
+  # - name: CASC | Setup | EDA
+  #   description: Job Template to set up EDA as code.
+  #   job_type: run
+  #   organization: Default
+  #   credentials:
+  #     - Controller Credential (dperrone)
+  #   project: Test CASC Repo
+  #   playbook: setup_eda.yml
+  #   execution_environment: Product Demos Event
+  #   inventory: Home Lab
+
+  # - name: CASC | Setup | Hub
+  #   description: Job Template to set up Hub as code.
+  #   job_type: run
+  #   organization: Default
+  #   credentials:
+  #     - Controller Credential (dperrone)
+  #   project: Test CASC Repo
+  #   playbook: setup_hub.yml
+  #   execution_environment: Product Demos Event
+  #   inventory: Home Lab
+
+  # - name: CASC | Setup | Platform
+  #   description: Job Template to set up Platform as code.
+  #   job_type: run
+  #   organization: Default
+  #   credentials:
+  #     - Controller Credential (dperrone)
+  #   project: Test CASC Repo
+  #   playbook: setup_platform.yml
+  #   execution_environment: Product Demos Event
+  #   inventory: Home Lab
+
+  #############################
+  # Event Driven Templates
+  #############################
+
+  - name: EDA | Break Web Service
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Personal | EDA Demos"
+    playbook: break_website.yml
+    execution_environment: Product Demos EE
+    labels: ['linux']
+    inventory: Home Lab (New)
+
+  - name: EDA | Fix Web Service
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Personal | EDA Demos"
+    playbook: break_website.yml
+    execution_environment: Product Demos EE
+    labels: ['linux']
+    inventory: Home Lab (New)
+
+  #############################
+  # Linux Templates
+  #############################
+
+  - name: Linux | Fact Scan
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Personal | AAP Demos"
+    playbook: playbooks/linux/fact_scan.yml
+    execution_environment: Product Demos EE
+    labels: ['linux']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: os_linux
+          required: true
+
+  - name: Linux | DISA STIG
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Ansible | Product Demos"
+    playbook: linux/disa_stig.yml
+    execution_environment: Product Demos EE
+    labels: ['linux', 'security']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: os_linux
+          required: true
+
+  - name: Linux | Install Applications
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Personal | AAP Demos"
+    playbook: playbooks/linux/install_app.yml
+    execution_environment: Product Demos EE
+    labels: ['linux']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: web01.dperrone.dev
+          required: true
+        - question_name: Application to be installed
+          type: multiplechoice
+          variable: app_role
+          default: apache
+          required: true
+          choices:
+            - apache
+            - kafka
+            - nginx
+            - opa
+        - question_name: Apache Web Page Title
+          type: text
+          variable: apache_test_page_heading
+          default: Apache Test Page
+          required: false
+        - question_name: Apache Web Page Body
+          type: text
+          variable: apache_test_page_message
+          default: This is an Apache server running correctly in the Podman container!
+          required: false
+        - question_name: Kafka Topic
+          type: text
+          variable: demo_topic
+          default: eda-test
+          required: false
+
+  - name: Linux | Install Packages
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Personal | AAP Demos"
+    playbook: playbooks/linux/install_package.yml
+    execution_environment: Product Demos EE
+    labels: ['linux']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: web01.dperrone.dev
+          required: true
+        - question_name: Application to be installed
+          type: multiselect
+          variable: selected_packages
+          default: git
+          required: true
+          choices:
+            - git
+            - curl
+            - wget
+            - vim
+            - htop
+            - nano
+            - unzip
+            - jq
+
+  - name: Linux | Patch Hosts
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Personal | AAP Demos"
+    playbook: playbooks/linux/patching.yml
+    execution_environment: Product Demos EE
+    labels: ['linux']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: os_linux
+          required: true
+
+  #############################
+  # ServiceNow Templates
+  #############################
+
+  - name: ServiceNow | Close Incident Ticket
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - ServiceNow (Dev)
+    project: "Personal | AAP Demos"
+    playbook: playbooks/itsm/snow_close_incident.yml
+    execution_environment: ServiceNow EE
+    labels: ['itsm']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Incident Number to Close
+          variable: incident_number
+          required: true
+          type: text
+        - question_name: Resolution Details
+          variable: close_notes
+          required: true
+          type: textarea
+        - question_name: Closure Reason
+          variable: close_code
+          required: true
+          type: multiplechoice
+          choices:
+            - Solution provided
+            - Solved (Permanently)
+            - Solved (Work Around)
+            - Not Solved (Not Reproducible)
+            - Closed/Resolved by Caller
+          default: Solution provided
+        - question_name: Final State
+          variable: closure_method
+          required: true
+          type: multiplechoice
+          choices:
+            - "6"
+            - "7"
+          default: "6"
+
+
+  - name: ServiceNow | Create Change Request (CR)
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - ServiceNow (Dev)
+    project: "Personal | AAP Demos"
+    playbook: playbooks/itsm/snow_create_change_request.yml
+    execution_environment: ServiceNow EE
+    labels: ['itsm']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Enter Short Description
+          variable: cr_short_description
+          required: true
+          type: text
+          default: Change Request created via AAP workflow.
+        - question_name: Describe the Change Request (CR)
+          variable: cr_description
+          required: true
+          type: textarea
+          default: This is a Change Request created using AAP with the servicenow.itsm collection.
+        - question_name: Change Request Urgency
+          variable: cr_urgency
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Change Request Impact
+          variable: cr_impact
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Change Request State
+          variable: incident_state
+          required: true
+          type: multiplechoice
+          choices:
+            - assess
+            - authorize
+            - scheduled
+            - implement
+            - review
+            - closed
+          default: assess
+        - question_name: Create Change Request
+          variable: create_change_request
+          required: true
+          type: multiplechoice
+          choices:
+            - "true"
+            - "false"
+          default: "true"
+
+  - name: ServiceNow | Create Incident Ticket
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - ServiceNow (Dev)
+    project: "Personal | AAP Demos"
+    playbook: playbooks/itsm/snow_create_incident.yml
+    execution_environment: ServiceNow EE
+    labels: ['itsm']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Enter Short Description
+          variable: incident_short_description
+          required: true
+          type: text
+          default: Incident created via AAP workflow.
+        - question_name: Describe the Incident
+          variable: incident_description
+          required: true
+          type: textarea
+          default: This is an incident created using AAP with the servicenow.itsm collection.
+        - question_name: Incident Urgency
+          variable: incident_urgency
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Incident Impact
+          variable: incident_impact
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Incident State
+          variable: incident_state
+          required: true
+          type: multiplechoice
+          choices:
+            - new
+            - in_progress
+            - on_hold
+            - resolved
+            - closed
+            - cancelled
+            - absent
+          default: new
+
+  - name: ServiceNow | Create Problem
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - ServiceNow (Dev)
+    project: "Personal | AAP Demos"
+    playbook: playbooks/itsm/snow_create_problem.yml
+    execution_environment: ServiceNow EE
+    labels: ['itsm']
+    inventory: Home Lab (New)
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Enter Short Description
+          variable: problem_short_description
+          required: true
+          type: text
+          default: Problem created via AAP workflow.
+        - question_name: Describe the Problem
+          variable: problem_description
+          required: true
+          type: textarea
+          default: This is a problem created using AAP with the servicenow.itsm collection.
+        - question_name: Select Problem Urgency
+          variable: problem_urgency
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Select Problem Impact
+          variable: problem_impact
+          required: true
+          type: multiplechoice
+          choices:
+            - high
+            - medium
+            - low
+          default: medium
+        - question_name: Select Problem State
+          variable: problem_state
+          required: true
+          type: multiplechoice
+          choices:
+            - new
+            - absent
+          default: new
+
+  - name: ServiceNow | Update Incident Ticket
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - ServiceNow (Dev)
+    project: "Personal | AAP Demos"
+    playbook: playbooks/itsm/snow_update_incident.yml
+    execution_environment: ServiceNow EE
+    labels: ['itsm']
+    inventory: Home Lab (New)
+
+
+  #############################
+  # Windows Templates
+  #############################
+
+  - name: Windows | Active Directory User Management
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Windows
+    project: "Personal | AAP Demos"
+    playbook: playbooks/windows/user_management.yml
+    execution_environment: Product Demos EE
+    labels: ['windows']
+    inventory: Home Lab
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          variable: _hosts
+          required: true
+          type: text
+          default: dc01.dperrone.dev
+        - question_name: User Management Action
+          variable: user_management_action
+          required: true
+          type: multiplechoice
+          choices:
+            - Add
+            - Remove
+          default: Add
+        - question_name: First Name
+          variable: firstname
+          required: true
+          type: text
+          default: Ansible
+        - question_name: Last Name
+          variable: surname
+          required: true
+          type: text
+          default: TestUser
+        - question_name: Company
+          variable: company
+          required: false
+          type: text
+          default: Test Company
+
+  - name: "Windows | Connectivity Test"
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: run
+    organization: Default
+    credentials:
+      - Windows
+    project: "Personal | AAP Demos"
+    playbook: playbooks/windows/connection_test.yml
+    execution_environment: Product Demos EE
+    labels: ['windows']
+    inventory: Home Lab
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          variable: _hosts
+          required: true
+          type: text
+          default: dc01.dperrone.dev
+
+  - name: "Windows | Patching"
+    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    job_type: check
+    organization: Default
+    credentials:
+      - Windows
+    use_fact_cache: true
+    ask_job_type_on_launch: true
+    project: "Personal | AAP Demos"
+    playbook: playbooks/windows/patching.yml
+    execution_environment: Product Demos EE
+    labels: ['windows']
+    inventory: Home Lab
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          required: false
+          default: dc01.dperrone.dev
+        - question_name: Update categories
+          type: multiselect
+          variable: win_update_categories
+          required: false
+          default: SecurityUpdates
+          choices:
+            - Application
+            - Connectors
+            - CriticalUpdates
+            - DefinitionUpdates
+            - DeveloperKits
+            - FeaturePacks Guidance
+            - SecurityUpdates
+            - ServicePacks
+            - Tools
+            - UpdateRollups
+            - Updates
+        - question_name: Reboot after install?
+          type: multiplechoice
+          variable: allow_reboot
+          required: false
+          default: 'Yes'
+          choices:
+            - 'Yes'
+            - 'No'
+
+  - name: Windows | Run PowerShell Script
+    description: "Query services on Windows hosts with PowerShell Script. NOTE: Template is managed with CaSC"
+    job_type: run
+    organization: Default
+    credentials:
+      - Windows
+    project: "Personal | AAP Demos"
+    playbook: playbooks/windows/powershell_script.yml
+    execution_environment: Product Demos EE
+    labels: ['windows']
+    inventory: Home Lab
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: dc01.dperrone.dev
+          required: true
+        - question_name: Service state to query
+          type: multiplechoice
+          variable: service_state
+          default: Running
+          choices:
+            - Running
+            - Stopped
+          required: true
+
+  - name: Windows | Run PowerShell Command
+    job_type: run
+    organization: Default
+    credentials:
+      - Windows
+    project: "Personal | AAP Demos"
+    playbook: playbooks/windows/powershell.yml
+    execution_environment: Product Demos EE
+    labels: ['windows']
+    inventory: Home Lab
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: os_windows
+          required: true
+        - question_name: PowerShell Script
+          type: textarea
+          variable: ps_script
+          default: Get-Service | Where-Object -FilterScript {$_.Status -eq 'running'} | Select-Object -Property 'Name'
+          required: true

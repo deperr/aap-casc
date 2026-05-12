@@ -1,0 +1,35 @@
+---
+
+controller_groups:
+
+  - inventory: Home Lab (New)
+    name: hypervisors
+    description: Hypervisors in the Home Lab inventory.
+    preserve_existing_hosts: true
+    preserve_existing_children: true
+
+  - inventory: Home Lab (New)
+    name: os_linux
+    description: Linux hosts in the Home Lab inventory.
+    preserve_existing_hosts: true
+    preserve_existing_children: true
+
+  - inventory: Home Lab (New)
+    name: os_windows
+    description: Windows hosts in the Home Lab inventory.
+    preserve_existing_hosts: true
+    preserve_existing_children: true
+    variables:
+      ansible_become_method: runas
+      ansible_shell_type: powershell
+    # variables:
+    #   ansible_connection: winrm
+    #   ansible_winrm_port: 5986
+    #   ansible_winrm_server_cert_validation: ignore
+    #   domain_controller: dc01.dperrone.dev
+
+  - inventory: Home Lab (New)
+    name: web_servers
+    description: Web servers in the Home Lab inventory.
+    preserve_existing_hosts: true
+    preserve_existing_children: true
