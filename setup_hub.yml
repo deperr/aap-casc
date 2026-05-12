@@ -1,0 +1,19 @@
+---
+
+- name: Setup AAP Config-as-Code for Controller
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - common/setup_hub.yml
+
+  tasks:
+    - name: Include Controller configuration files
+      tags: always
+      ansible.builtin.include_vars:
+        dir: hub
+
+    - name: Call dispatch role for Controller configuration
+      tags: always
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.dispatch
