@@ -1,0 +1,19 @@
+---
+
+- name: Setup the Platform with Config-as-Code
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - common/setup_controller.yml
+
+  tasks:
+    - name: Include Platform configuration files
+      tags: always
+      ansible.builtin.include_vars:
+        dir: platform
+
+    - name: Call dispatch role for Platform configuration
+      tags: always
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.dispatch

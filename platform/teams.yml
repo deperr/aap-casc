@@ -1,0 +1,19 @@
+---
+
+aap_teams:
+
+  - name: DevOps-new
+    description: DevOps team within the Default organization
+    organization: Default
+  - name: Infrastructure-new
+    description: Infrastructure team within the Default organization
+    organization: Default
+  - name: Linux-new
+    description: Linux team within the Default organization
+    organization: Default
+  - name: NetOps-new
+    description: Network team within the Default organization
+    organization: Default
+  - name: Windows-new
+    description: Windows team within the Default organization
+    organization: Default
