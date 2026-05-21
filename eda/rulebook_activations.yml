@@ -5,7 +5,7 @@ eda_rulebook_activations:
   - name: Website Heartbeat Check
     description: Rulebook that checks that one or more URLs is reachable
     organization: Default
-    project: "Personal | EDA Demos (CaC)"
+    project: "Personal | EDA Demos"
     rulebook: url_check.yml
     decision_environment: Default Decision Environment
     eda_credentials:

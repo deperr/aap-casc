@@ -1,0 +1,50 @@
+---
+
+controller_roles:
+
+  # Linux Team Permissions
+  - team: Linux
+    role: admin
+    credentials:
+      - "AWS (Personal)"
+      - "AWS (Open Environment)"
+      - "Insights"
+      - "Insights (svc key)"
+      - "Linux"
+    job_templates:
+      - "Linux | DISA STIG"
+      - "Linux | Fact Scan"
+      - "Linux | Install Applications"
+      - "Linux | Install Packages"
+      - "Linux | Patch Hosts"
+      - "Linux | Podman Web Server"
+      - "ServiceNow | Close Incident Ticket"
+      - "ServiceNow | Create Change Request (CR)"
+      - "ServiceNow | Create Incident Ticket"
+      - "ServiceNow | Create Problem"
+      - "ServiceNow | Update Incident Ticket"
+    workflows:
+      - "Linux | Workflow | Patch and STIG"
+      - "Linux | Workflow | Podman Web Server"
+      - "ServiceNow | Workflow | Incident Lifecycle"
+
+  # Windows Team Permissions
+  - team: Windows
+    role: admin
+    credentials:
+      - "AWS (Personal)"
+      - "AWS (Open Environment)"
+      - "Windows"
+    job_templates:
+      - "ServiceNow | Close Incident Ticket"
+      - "ServiceNow | Create Change Request (CR)"
+      - "ServiceNow | Create Incident Ticket"
+      - "ServiceNow | Create Problem"
+      - "ServiceNow | Update Incident Ticket"
+      - "Windows | Active Directory User Management"
+      - "Windows | Connectivity Test"
+      - "Windows | Patching"
+      - "Windows | Run PowerShell Script"
+      - "Windows | Run PowerShell Command"
+    workflows:
+      - "ServiceNow | Workflow | Incident Lifecycle"

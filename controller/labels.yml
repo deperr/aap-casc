@@ -4,17 +4,24 @@ controller_labels:
 
   - name: casc
     organization: Default
+
   - name: cloud
     organization: Default
+
   - name: demo
     organization: Default
+
   - name: itsm
     organization: Default
+
   - name: linux
     organization: Default
+
   - name: network
     organization: Default
+
   - name: security
     organization: Default
+
   - name: windows
     organization: Default

@@ -1,0 +1,102 @@
+---
+
+gateway_authenticator_maps:
+
+  - name: Map AD users to Default organization
+    authenticator: "Microsoft Active Directory"
+    order: 1
+    revoke: true
+    map_type: "organization"
+    organization: "Default"
+    role: "Organization Member"
+    triggers:
+      groups:
+        has_or:
+        - "cn=ansible_users,ou=ansible_ou,dc=dperrone,dc=dev"
+        - "cn=ansible_admins,ou=ansible_ou,dc=dperrone,dc=dev"
+
+# Map Team Administrators
+  - name: "DevOps: Team Administrators"
+    authenticator: "Microsoft Active Directory"
+    order: 2
+    revoke: false
+    map_type: "team"
+    organization: "Default"
+    team: "DevOps"
+    role: "Team Admin"
+    triggers:
+      groups:
+        has_and:
+        - "cn=aap_devops_team,ou=ansible_ou,dc=dperrone,dc=dev"
+        - "cn=ansible_admins,ou=ansible_ou,dc=dperrone,dc=dev"
+
+  - name: "Linux: Team Administrators"
+    authenticator: "Microsoft Active Directory"
+    order: 3
+    revoke: false
+    map_type: "team"
+    organization: "Default"
+    team: "Linux"
+    role: "Team Admin"
+    triggers:
+      groups:
+        has_and:
+        - "cn=aap_linux_team,ou=ansible_ou,dc=dperrone,dc=dev"
+        - "cn=ansible_admins,ou=ansible_ou,dc=dperrone,dc=dev"
+
+  - name: "Windows: Team Administrators"
+    authenticator: "Microsoft Active Directory"
+    order: 4
+    revoke: false
+    map_type: "team"
+    organization: "Default"
+    team: "Windows"
+    role: "Team Admin"
+    triggers:
+      groups:
+        has_and:
+        - "cn=aap_windows_team,ou=ansible_ou,dc=dperrone,dc=dev"
+        - "cn=ansible_admins,ou=ansible_ou,dc=dperrone,dc=dev"
+
+# Map Team Members
+  - name: "DevOps: Team Members"
+    authenticator: "Microsoft Active Directory"
+    order: 5
+    revoke: false
+    map_type: "team"
+    organization: "Default"
+    team: "DevOps"
+    role: "Team Member"
+    triggers:
+      groups:
+        has_and:
+        - "cn=aap_devops_team,ou=ansible_ou,dc=dperrone,dc=dev"
+        - "cn=ansible_users,ou=ansible_ou,dc=dperrone,dc=dev"
+
+  - name: "Linux: Team Members"
+    authenticator: "Microsoft Active Directory"
+    order: 6
+    revoke: false
+    map_type: "team"
+    organization: "Default"
+    team: "Linux"
+    role: "Team Admin"
+    triggers:
+      groups:
+        has_and:
+        - "cn=aap_linux_team,ou=ansible_ou,dc=dperrone,dc=dev"
+        - "cn=ansible_users,ou=ansible_ou,dc=dperrone,dc=dev"
+
+  - name: "Windows: Team Members"
+    authenticator: "Microsoft Active Directory"
+    order: 4
+    revoke: false
+    map_type: "team"
+    organization: "Default"
+    team: "Windows"
+    role: "Team Admin"
+    triggers:
+      groups:
+        has_and:
+        - "cn=aap_windows_team,ou=ansible_ou,dc=dperrone,dc=dev"
+        - "cn=ansible_users,ou=ansible_ou,dc=dperrone,dc=dev"

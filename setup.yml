@@ -1,0 +1,63 @@
+---
+
+- name: Setup AAP Config-as-Code
+  hosts: localhost
+  gather_facts: false
+
+  pre_tasks:
+    - name: Validate casc_target selection
+      ansible.builtin.assert:
+        that:
+          - casc_target is defined
+          - casc_target in ['controller', 'hub', 'eda', 'platform', 'all']
+        fail_msg: "casc_target must be one of: controller, hub, eda, platform, all"
+        success_msg: "Configuring '{{ casc_target }}' component(s)"
+
+  tasks:
+    - name: Configure Controller
+      when: casc_target in ['controller', 'all']
+      tags: controller
+      block:
+        - name: Include Controller configuration files
+          ansible.builtin.include_vars:
+            dir: controller
+
+        - name: Dispatch Controller configuration
+          ansible.builtin.include_role:
+            name: infra.aap_configuration.dispatch
+
+    - name: Configure Hub
+      when: casc_target in ['hub', 'all']
+      tags: hub
+      block:
+        - name: Include Hub configuration files
+          ansible.builtin.include_vars:
+            dir: hub
+
+        - name: Dispatch Hub configuration
+          ansible.builtin.include_role:
+            name: infra.aap_configuration.dispatch
+
+    - name: Configure EDA
+      when: casc_target in ['eda', 'all']
+      tags: eda
+      block:
+        - name: Include EDA configuration files
+          ansible.builtin.include_vars:
+            dir: eda
+
+        - name: Dispatch EDA configuration
+          ansible.builtin.include_role:
+            name: infra.aap_configuration.dispatch
+
+    - name: Configure Platform
+      when: casc_target in ['platform', 'all']
+      tags: platform
+      block:
+        - name: Include Platform configuration files
+          ansible.builtin.include_vars:
+            dir: platform
+
+        - name: Dispatch Platform configuration
+          ansible.builtin.include_role:
+            name: infra.aap_configuration.dispatch

@@ -53,7 +53,7 @@ controller_templates:
     playbook: break_website.yml
     execution_environment: Product Demos EE
     labels: ['linux']
-    inventory: Home Lab (New)
+    inventory: Home Lab
 
   - name: EDA | Fix Web Service
     description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
@@ -65,7 +65,7 @@ controller_templates:
     playbook: break_website.yml
     execution_environment: Product Demos EE
     labels: ['linux']
-    inventory: Home Lab (New)
+    inventory: Home Lab
 
   #############################
   # Linux Templates
@@ -81,7 +81,7 @@ controller_templates:
     playbook: playbooks/linux/fact_scan.yml
     execution_environment: Product Demos EE
     labels: ['linux']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -103,7 +103,7 @@ controller_templates:
     playbook: linux/disa_stig.yml
     execution_environment: Product Demos EE
     labels: ['linux', 'security']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -125,7 +125,7 @@ controller_templates:
     playbook: playbooks/linux/install_app.yml
     execution_environment: Product Demos EE
     labels: ['linux']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -172,7 +172,7 @@ controller_templates:
     playbook: playbooks/linux/install_package.yml
     execution_environment: Product Demos EE
     labels: ['linux']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -208,7 +208,7 @@ controller_templates:
     playbook: playbooks/linux/patching.yml
     execution_environment: Product Demos EE
     labels: ['linux']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -234,7 +234,7 @@ controller_templates:
     playbook: playbooks/itsm/snow_close_incident.yml
     execution_environment: ServiceNow EE
     labels: ['itsm']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -279,7 +279,7 @@ controller_templates:
     playbook: playbooks/itsm/snow_create_change_request.yml
     execution_environment: ServiceNow EE
     labels: ['itsm']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -344,7 +344,7 @@ controller_templates:
     playbook: playbooks/itsm/snow_create_incident.yml
     execution_environment: ServiceNow EE
     labels: ['itsm']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -402,7 +402,7 @@ controller_templates:
     playbook: playbooks/itsm/snow_create_problem.yml
     execution_environment: ServiceNow EE
     labels: ['itsm']
-    inventory: Home Lab (New)
+    inventory: Home Lab
     survey_enabled: true
     survey:
       name: ''
@@ -455,7 +455,7 @@ controller_templates:
     playbook: playbooks/itsm/snow_update_incident.yml
     execution_environment: ServiceNow EE
     labels: ['itsm']
-    inventory: Home Lab (New)
+    inventory: Home Lab
 
 
   #############################

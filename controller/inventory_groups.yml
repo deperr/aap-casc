@@ -2,19 +2,19 @@
 
 controller_groups:
 
-  - inventory: Home Lab (New)
+  - inventory: Home Lab
     name: hypervisors
     description: Hypervisors in the Home Lab inventory.
     preserve_existing_hosts: true
     preserve_existing_children: true
 
-  - inventory: Home Lab (New)
+  - inventory: Home Lab
     name: os_linux
     description: Linux hosts in the Home Lab inventory.
     preserve_existing_hosts: true
     preserve_existing_children: true
 
-  - inventory: Home Lab (New)
+  - inventory: Home Lab
     name: os_windows
     description: Windows hosts in the Home Lab inventory.
     preserve_existing_hosts: true
@@ -28,7 +28,7 @@ controller_groups:
     #   ansible_winrm_server_cert_validation: ignore
     #   domain_controller: dc01.dperrone.dev
 
-  - inventory: Home Lab (New)
+  - inventory: Home Lab
     name: web_servers
     description: Web servers in the Home Lab inventory.
     preserve_existing_hosts: true

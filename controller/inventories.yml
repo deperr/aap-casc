@@ -10,7 +10,7 @@ controller_inventories:
     organization: Default
     description: Hosts deployed in RHDPS.
 
-  - name: Home Lab (New)
+  - name: Home Lab
     organization: Default 
     description: Hosts within my home lab.
 

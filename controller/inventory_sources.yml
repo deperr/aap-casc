@@ -5,7 +5,7 @@ controller_inventory_sources:
   - name: AWS (Personal Account)
     organization: Default
     source: ec2
-    inventory: Home Lab (New)
+    inventory: Home Lab
     credential: AWS (Personal)
     overwrite: true
     source_vars:
@@ -27,7 +27,7 @@ controller_inventory_sources:
   - name: Red Hat Insights
     organization: Default
     source: insights
-    inventory: Home Lab (New)
+    inventory: Home Lab
     credential: Insights (svc key)
     overwrite: true
     source_vars:
