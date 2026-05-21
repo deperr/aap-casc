@@ -62,7 +62,7 @@ controller_templates:
     credentials:
       - Linux
     project: "Personal | EDA Demos"
-    playbook: break_website.yml
+    playbook: fix_website.yml
     execution_environment: Product Demos EE
     labels: ['linux']
     inventory: Home Lab
