@@ -2,6 +2,18 @@
 
 eda_rulebook_activations:
 
+  - name: STIG File Watch
+    description: Ensures any unauthorized changes are reverted
+    organization: Default
+    project: "Personal | EDA Demos"
+    rulebook: stig_watch.yml
+    decision_environment: Default Decision Environment
+    eda_credentials:
+      - Ansible Automation Platform Controller
+    enabled: false
+    log_level: debug
+    restart_policy: never
+
   - name: Website Heartbeat Check
     description: Rulebook that checks that one or more URLs is reachable
     organization: Default
