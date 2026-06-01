@@ -101,7 +101,7 @@ controller_templates:
     labels: ['linux']
     inventory: Home Lab
 
-  - name: EDA | STIG | Remediate 
+  - name: EDA | STIG | Remediate
     description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
     job_type: run
     organization: Default
