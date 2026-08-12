@@ -43,8 +43,30 @@ controller_templates:
   # Event Driven Templates
   #############################
 
+  - name: EDA | STIG | Apply Hardened Baseline
+    description: "Apply hardened baseline to host. For use with EDA."
+    job_type: run
+    organization: Default
+    credentials:
+      - Linux
+    project: "Personal | AAP Demos"
+    playbook: playbooks/eda/harden_demo_baseline
+    execution_environment: Product Demos EE
+    labels: ['linux', 'casc']
+    inventory: Home Lab
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: web03.dperrone.dev
+          required: true
+
   - name: EDA | Break Web Service
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Break Apache service on web host. For use with EDA."
     job_type: run
     organization: Default
     credentials:
@@ -52,11 +74,11 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/break_website.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
 
-  - name: EDA | STIG | Break Configuration 
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+  - name: EDA | STIG | Inject Config Drift
+    description: "Inject configuration drift from STIG baseline. For use with EDA."
     job_type: run
     organization: Default
     credentials:
@@ -64,11 +86,11 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/break_stig.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
 
   - name: EDA | Create Event Source
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Create a Kafka instance on remote host."
     job_type: run
     organization: Default
     credentials:
@@ -76,7 +98,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/deploy_eda_source.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -90,7 +112,7 @@ controller_templates:
           required: true
 
   - name: EDA | Fix Web Service
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Remediate web service issue."
     job_type: run
     organization: Default
     credentials:
@@ -98,11 +120,11 @@ controller_templates:
     project: "Personal | EDA Demos"
     playbook: fix_website.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
 
   - name: EDA | STIG | Remediate
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Fix configuration drift from injection."
     job_type: run
     organization: Default
     credentials:
@@ -110,7 +132,8 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/stig_remediate.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    ask_variables_on_launch: true
+    labels: ['linux', 'casc']
     inventory: Home Lab
 
   #############################

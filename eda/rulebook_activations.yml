@@ -2,7 +2,7 @@
 
 eda_rulebook_activations:
 
-  - name: STIG File Watch
+  - name: STIG Configuration Drift Monitor
     description: Ensures any unauthorized changes are reverted
     organization: Default
     project: "Personal | EDA Demos"

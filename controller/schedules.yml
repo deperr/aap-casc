@@ -3,5 +3,5 @@
 controller_schedules:
   - name: Inject error for EDA
     description: Inject insecure setting into STIG'd file.
-    unified_job_template: EDA | STIG | Break Configuration
+    unified_job_template: EDA | STIG | Inject Config Drift
     rrule: DTSTART;TZID=America/New_York:20260601T130000 RRULE:FREQ=HOURLY;INTERVAL=1
