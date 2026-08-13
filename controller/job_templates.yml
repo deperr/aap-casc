@@ -111,17 +111,17 @@ controller_templates:
           default: web03.dperrone.dev
           required: true
 
-  - name: EDA | Fix Web Service
-    description: "Remediate web service issue."
-    job_type: run
-    organization: Default
-    credentials:
-      - Linux
-    project: "Personal | EDA Demos"
-    playbook: fix_website.yml
-    execution_environment: Product Demos EE
-    labels: ['linux', 'casc']
-    inventory: Home Lab
+  # - name: EDA | Fix Web Service
+  #   description: "Remediate web service issue."
+  #   job_type: run
+  #   organization: Default
+  #   credentials:
+  #     - Linux
+  #   project: "Personal | EDA Demos"
+  #   playbook: fix_website.yml
+  #   execution_environment: Product Demos EE
+  #   labels: ['linux', 'casc']
+  #   inventory: Home Lab
 
   - name: EDA | STIG | Remediate
     description: "Fix configuration drift from injection."
