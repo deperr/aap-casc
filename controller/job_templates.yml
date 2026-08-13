@@ -50,7 +50,7 @@ controller_templates:
     credentials:
       - Linux
     project: "Personal | AAP Demos"
-    playbook: playbooks/eda/harden_demo_baseline
+    playbook: playbooks/eda/harden_demo_baseline.yml
     execution_environment: Product Demos EE
     labels: ['linux', 'casc']
     inventory: Home Lab
