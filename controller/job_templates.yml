@@ -141,7 +141,7 @@ controller_templates:
   #############################
 
   - name: Linux | Fact Scan
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Scan facts on Linux hosts"
     job_type: run
     organization: Default
     credentials:
@@ -149,7 +149,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/fact_scan.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -163,7 +163,7 @@ controller_templates:
           required: true
 
   - name: Linux | DISA STIG
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Apply STIG hardening baseline."
     job_type: run
     organization: Default
     credentials:
@@ -171,7 +171,7 @@ controller_templates:
     project: "Ansible | Product Demos"
     playbook: linux/disa_stig.yml
     execution_environment: Product Demos EE
-    labels: ['linux', 'security']
+    labels: ['linux', 'security', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -193,7 +193,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/install_app.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -240,7 +240,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/install_package.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -276,7 +276,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/patching.yml
     execution_environment: Product Demos EE
-    labels: ['linux']
+    labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -302,7 +302,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/itsm/snow_close_incident.yml
     execution_environment: ServiceNow EE
-    labels: ['itsm']
+    labels: ['itsm', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -347,7 +347,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/itsm/snow_create_change_request.yml
     execution_environment: ServiceNow EE
-    labels: ['itsm']
+    labels: ['itsm', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -412,7 +412,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/itsm/snow_create_incident.yml
     execution_environment: ServiceNow EE
-    labels: ['itsm']
+    labels: ['itsm', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -470,7 +470,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/itsm/snow_create_problem.yml
     execution_environment: ServiceNow EE
-    labels: ['itsm']
+    labels: ['itsm', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -523,7 +523,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/itsm/snow_update_incident.yml
     execution_environment: ServiceNow EE
-    labels: ['itsm']
+    labels: ['itsm', 'casc']
     inventory: Home Lab
 
 
@@ -540,7 +540,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/user_management.yml
     execution_environment: Product Demos EE
-    labels: ['windows']
+    labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -585,7 +585,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/connection_test.yml
     execution_environment: Product Demos EE
-    labels: ['windows']
+    labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -609,7 +609,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/patching.yml
     execution_environment: Product Demos EE
-    labels: ['windows']
+    labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -648,7 +648,7 @@ controller_templates:
             - 'No'
 
   - name: Windows | Run PowerShell Script
-    description: "Query services on Windows hosts with PowerShell Script. NOTE: Template is managed with CaSC"
+    description: "Query services on Windows hosts with PowerShell Script."
     job_type: run
     organization: Default
     credentials:
@@ -656,7 +656,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/powershell_script.yml
     execution_environment: Product Demos EE
-    labels: ['windows']
+    labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:
@@ -685,7 +685,7 @@ controller_templates:
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/powershell.yml
     execution_environment: Product Demos EE
-    labels: ['windows']
+    labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
     survey:

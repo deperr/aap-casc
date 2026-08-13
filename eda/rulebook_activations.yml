@@ -6,7 +6,7 @@ eda_rulebook_activations:
     description: Ensures any unauthorized changes are reverted
     organization: Default
     project: "Personal | EDA Demos"
-    rulebook: stig_watch.yml
+    rulebook: rulebooks/stig_watch.yml
     decision_environment: Default Decision Environment
     eda_credentials:
       - Ansible Automation Platform Controller
@@ -18,7 +18,7 @@ eda_rulebook_activations:
     description: Rulebook that checks that one or more URLs is reachable
     organization: Default
     project: "Personal | EDA Demos"
-    rulebook: url_check.yml
+    rulebook: rulebooks/url_check.yml
     decision_environment: Default Decision Environment
     eda_credentials:
       - Ansible Automation Platform Controller
