@@ -32,7 +32,7 @@ controller_projects:
     description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
     organization: Default
     scm_type: git
-    scm_url: https://github.com/deperr/eda-demos.git
+    scm_url: https://github.com/deperr/ansible-eda-demos.git
     scm_branch: main
     default_environment: Product Demos EE
     wait: true

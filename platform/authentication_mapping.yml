@@ -80,7 +80,7 @@ gateway_authenticator_maps:
     map_type: "team"
     organization: "Default"
     team: "Linux"
-    role: "Team Admin"
+    role: "Team Member"
     triggers:
       groups:
         has_and:
@@ -89,12 +89,12 @@ gateway_authenticator_maps:
 
   - name: "Windows: Team Members"
     authenticator: "Microsoft Active Directory"
-    order: 4
+    order: 7
     revoke: false
     map_type: "team"
     organization: "Default"
     team: "Windows"
-    role: "Team Admin"
+    role: "Team Member"
     triggers:
       groups:
         has_and:

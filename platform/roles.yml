@@ -17,7 +17,7 @@ controller_roles:
       - "Linux | Install Applications"
       - "Linux | Install Packages"
       - "Linux | Patch Hosts"
-      - "Linux | Podman Web Server"
+      # - "Linux | Podman Web Server"
       - "ServiceNow | Close Incident Ticket"
       - "ServiceNow | Create Change Request (CR)"
       - "ServiceNow | Create Incident Ticket"
@@ -25,7 +25,7 @@ controller_roles:
       - "ServiceNow | Update Incident Ticket"
     workflows:
       - "Linux | Workflow | Patch and STIG"
-      - "Linux | Workflow | Podman Web Server"
+      # - "Linux | Workflow | Podman Web Server"
       - "ServiceNow | Workflow | Incident Lifecycle"
 
   # Windows Team Permissions
