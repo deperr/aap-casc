@@ -1,15 +1,15 @@
-# ---
+---
 
-# hub_collection_repositories:
+hub_collection_repositories:
 
-#   - name: "community"
-#     description: "PAH with Community content"
-#     pulp_labels:
-#       pipeline: "approved"
-#     distribution:
-#       name: "community"
-#       state: present
-#     remote: community
+  - name: "community"
+    description: "PAH with Community content"
+    pulp_labels:
+      pipeline: "approved"
+    distribution:
+      name: "community"
+      state: present
+    remote: community
 
 #   - name: "rh-certified"
 #     description: "PAH with Red Hat Certified content"
