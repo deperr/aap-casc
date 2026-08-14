@@ -8,7 +8,7 @@ controller_projects:
     scm_type: git
     scm_url: https://github.com/ansible/product-demos-bootstrap
     scm_branch: main
-    default_environment: Product Demos EE
+    default_environment: Product Demos EE (2.7)
     wait: true
 
   - name: Ansible | Product Demos
@@ -17,7 +17,7 @@ controller_projects:
     scm_type: git
     scm_url: https://github.com/ansible/product-demos
     scm_branch: main
-    default_environment: Product Demos EE
+    default_environment: Product Demos EE (2.7)
     wait: true
 
   - name: Personal | AAP Demos
@@ -25,7 +25,7 @@ controller_projects:
     scm_type: git
     scm_url: https://github.com/deperr/ansible-demos.git
     scm_branch: main
-    default_environment: Product Demos EE
+    default_environment: Product Demos EE (2.7)
     wait: true
 
   - name: Personal | EDA Demos
@@ -34,7 +34,7 @@ controller_projects:
     scm_type: git
     scm_url: https://github.com/deperr/ansible-eda-demos.git
     scm_branch: main
-    default_environment: Product Demos EE
+    default_environment: Product Demos EE (2.7)
     wait: true
 
   # - name: Personal | Configuration as Code
@@ -43,5 +43,5 @@ controller_projects:
   #   scm_type: git
   #   scm_url: https://github.com/deperr/ansible-cac.git
   #   scm_branch: main
-  #   default_environment: Product Demos EE (CaC)
+  #   default_environment: Product Demos EE (2.7) (CaC)
   #   wait: true
