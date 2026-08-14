@@ -51,7 +51,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/harden_demo_baseline.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -73,7 +73,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/break_website.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
 
@@ -85,7 +85,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/break_stig.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
 
@@ -97,7 +97,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/deploy_eda_source.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -119,7 +119,7 @@ controller_templates:
   #     - Linux
   #   project: "Personal | EDA Demos"
   #   playbook: fix_website.yml
-  #   execution_environment: Product Demos EE
+  #   execution_environment: Product Demos EE (2.7)
   #   labels: ['linux', 'casc']
   #   inventory: Home Lab
 
@@ -131,7 +131,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/eda/stig_remediate.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     ask_variables_on_launch: true
     labels: ['linux', 'casc']
     inventory: Home Lab
@@ -148,7 +148,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/fact_scan.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -170,7 +170,7 @@ controller_templates:
       - Linux
     project: "Ansible | Product Demos"
     playbook: linux/disa_stig.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'security', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -192,7 +192,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/install_app.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -239,7 +239,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/install_package.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -275,7 +275,7 @@ controller_templates:
       - Linux
     project: "Personal | AAP Demos"
     playbook: playbooks/linux/patching.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['linux', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -539,7 +539,7 @@ controller_templates:
       - Windows
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/user_management.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -584,7 +584,7 @@ controller_templates:
       - Windows
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/connection_test.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -608,7 +608,7 @@ controller_templates:
     ask_job_type_on_launch: true
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/patching.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -655,7 +655,7 @@ controller_templates:
       - Windows
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/powershell_script.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
@@ -684,7 +684,7 @@ controller_templates:
       - Windows
     project: "Personal | AAP Demos"
     playbook: playbooks/windows/powershell.yml
-    execution_environment: Product Demos EE
+    execution_environment: Product Demos EE (2.7)
     labels: ['windows', 'casc']
     inventory: Home Lab
     survey_enabled: true
