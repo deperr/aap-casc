@@ -3,6 +3,6 @@
 eda_projects:
 
   - name: Personal | EDA Demos
-    description: Personal repository for EDA demos
+    description: "Personal repository for EDA demos."
     url: https://github.com/deperr/ansible-eda-demos.git
     organization: Default
