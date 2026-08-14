@@ -2,20 +2,20 @@
 
 hub_collection_remotes:
 
-  # - name: rh-validated
-  #   url: https://console.redhat.com/api/automation-hub/content/validated/
-  #   auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
-  #   requirements:
-  #     - name: infra.aap_configuration
-  #     - name: infra.aap_utilities
-  #     - name: infra.ee_utilities
+  - name: rh-validated
+    url: https://console.redhat.com/api/automation-hub/content/validated/
+    auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+    requirements:
+      - name: infra.aap_configuration
+      - name: infra.aap_utilities
+      - name: infra.ee_utilities
 
-  # - name: rh-certified
-  #   url: https://console.redhat.com/api/automation-hub/content/published/
-  #   auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
-  #   requirements:
-  #     - name: amazon.aws
-  #     - name: microsoft.ad
+  - name: rh-certified
+    url: https://console.redhat.com/api/automation-hub/content/published/
+    auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+    requirements:
+      - name: amazon.aws
+      - name: microsoft.ad
 
   - name: community
     url: https://galaxy.ansible.com/api/

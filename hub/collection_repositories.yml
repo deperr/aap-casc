@@ -11,20 +11,20 @@ hub_collection_repositories:
       state: present
     remote: community
 
-#   - name: "rh-certified"
-#     description: "PAH with Red Hat Certified content"
-#     pulp_labels:
-#       pipeline: "approved"
-#     distribution:
-#       name: "rh-certified"
-#       state: present
-#     remote: rh-certified
+  - name: "rh-certified"
+    description: "PAH with Red Hat Certified content"
+    pulp_labels:
+      pipeline: "approved"
+    distribution:
+      name: "rh-certified"
+      state: present
+    remote: rh-certified
 
-#   - name: "rh-validated"
-#     description: "PAH with Red Hat Validated content"
-#     pulp_labels:
-#       pipeline: "approved"
-#     distribution:
-#       name: "rh-validated"
-#       state: present
-#     remote: rh-validated
+  - name: "validated"
+    description: "PAH with Red Hat Validated content"
+    pulp_labels:
+      pipeline: "approved"
+    distribution:
+      name: "validated"
+      state: present
+    remote: rh-validated
