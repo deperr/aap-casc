@@ -3,7 +3,7 @@
 controller_projects:
 
   - name: Ansible | Product Demos Bootstrap
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Repository used to add bootstramp components in order to use APD."
     organization: Default
     scm_type: git
     scm_url: https://github.com/ansible/product-demos-bootstrap
@@ -12,7 +12,7 @@ controller_projects:
     wait: true
 
   - name: Ansible | Product Demos
-    description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
+    description: "Primary repository for teams Ansible Product Demos."
     organization: Default
     scm_type: git
     scm_url: https://github.com/ansible/product-demos

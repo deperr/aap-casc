@@ -598,6 +598,112 @@ controller_templates:
           type: text
           default: dc01.dperrone.dev
 
+  - name: "Windows | Configure System Banner"
+    description: "Configure Windows system banner"
+    job_type: run
+    organization: Default
+    credentials:
+      Windows
+    project: "Project | AAP Demos"
+    playbook: playbooks/windows/system_banner.yml
+    execution_environment: Product Demos EE (2.7)
+    labels: ["windows", "security", "casc"]
+    inventory: Home Lab
+    survey_enabled:
+      name: ''
+      description: ''
+      spec:
+        - question_name: "Banner State"
+          question_description: "Install/configure or remove SystemBanner"
+          required: true
+          type: multiplechoice
+          variable: system_banner_state
+          choices:
+            - present
+            - absent
+          default: present
+          min: 0
+          max: 1024
+          new_question: true
+        - question_name: "Classification Level"
+          question_description: "Predefined classification marking. Choose CUSTOM to specify your own text and colors."
+          required: true
+          type: multiplechoice
+          variable: system_banner_classification
+          choices:
+            - UNCLASSIFIED
+            - CUI
+            - CONFIDENTIAL
+            - SECRET
+            - TOP SECRET
+            - TOP SECRET SCI
+            - CUSTOM
+          default: UNCLASSIFIED
+          min: 0
+          max: 1024
+          new_question: true
+        - question_name: "Custom Banner Text"
+          question_description: "Text displayed on the banner (only used when Classification Level is CUSTOM)"
+          required: false
+          type: text
+          variable: system_banner_custom_text
+          default: ""
+          min: 0
+          max: 1024
+          new_question: true
+        - question_name: "Banner Position"
+          question_description: "Display the banner at the top of the screen only, or at both top and bottom"
+          required: true
+          type: multiplechoice
+          variable: system_banner_position
+          choices:
+            - top
+            - top_and_bottom
+          default: top
+          min: 0
+          max: 1024
+          new_question: true
+        - question_name: "Background Color"
+          question_description: "Banner background color as hex code (only used when Classification Level is CUSTOM)"
+          required: false
+          type: text
+          variable: system_banner_bg_color
+          default: "#007A33"
+          min: 4
+          max: 7
+          new_question: true
+        - question_name: "Text Color"
+          question_description: "Banner text/foreground color as hex code (only used when Classification Level is CUSTOM)"
+          required: false
+          type: text
+          variable: system_banner_fg_color
+          default: "#FFFFFF"
+          min: 4
+          max: 7
+          new_question: true
+
+  - name: Windows | DISA STIG
+    description: "Apply STIG hardening baseline."
+    job_type: run
+    organization: Default
+    credentials:
+      - Windows
+    project: "Personal | AAP Demos"
+    playbook: playbooks/windows/disa_stig.yml
+    execution_environment: Product Demos EE (2.7)
+    labels: ['windows', 'security', 'casc']
+    inventory: Home Lab
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Server Name or Pattern
+          type: text
+          variable: _hosts
+          default: os_windows
+          required: true
+
   - name: "Windows | Patching"
     description: "NOTE: This is managed by Config as Code. Manual changes may be overwritten."
     job_type: check

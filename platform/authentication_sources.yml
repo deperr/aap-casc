@@ -5,7 +5,7 @@ gateway_authenticators:
   - name: Microsoft Active Directory
     type: ansible_base.authentication.authenticator_plugins.ldap
     slug: ansible_base-authentication-authenticator_plugins-ldap__microsoft-active-directory
-    order: 1
+    order: 2
     enabled: true
     create_objects: true
     remove_users: true
