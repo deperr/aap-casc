@@ -121,6 +121,148 @@ controller_workflows:
       - identifier: Close Ticket
         unified_job_template: "ServiceNow | Close Incident Ticket"
 
+  - name: "ServiceNow | Workflow | Provision and Patch EC2"
+    description: >-
+      Opens a ServiceNow incident, provisions an EC2 instance, patches it, and resolves
+      the ticket. Failures leave the ticket open and escalated instead.
+    organization: Default
+    labels: ['itsm', 'casc']
+    ask_variables_on_launch: true
+    survey_enabled: true
+    survey:
+      name: ''
+      description: ''
+      spec:
+        - question_name: Name
+          question_description: Desired hostname of server.
+          type: text
+          variable: create_vm_vm_name
+          required: true
+
+        - question_name: Blueprint
+          question_description: "RHEL family only. Patches with DNF."
+          type: multiplechoice
+          variable: vm_blueprint
+          required: true
+          default: rhel9
+          choices:
+            - rhel9
+            - rhel8
+            - al2023
+
+        - question_name: Select AWS Region
+          type: multiplechoice
+          variable: create_vm_aws_region
+          required: true
+          default: us-east-2
+          choices:
+            - us-east-1
+            - us-east-2
+            - us-west-1
+            - us-west-2
+
+        - question_name: Environment
+          type: multiplechoice
+          variable: create_vm_vm_environment
+          required: true
+          default: Dev
+          choices:
+            - Dev
+            - QA
+            - Prod
+
+        - question_name: Owner
+          type: text
+          variable: create_vm_vm_owner
+          required: true
+          default: ansible
+
+        - question_name: Deployment
+          type: text
+          variable: create_vm_vm_deployment
+          required: true
+          default: default
+
+        - question_name: Purpose
+          type: text
+          variable: create_vm_vm_purpose
+          required: true
+          default: demo
+
+        - question_name: Subnet
+          question_description: Name tag of the subnet, not its id.
+          type: text
+          variable: create_vm_aws_vpc_subnet_name
+          required: true
+          default: aws-test-subnet
+
+        - question_name: Security Group
+          question_description: Name of the security group, not its id.
+          type: text
+          variable: create_vm_aws_securitygroup_name
+          required: true
+          default: aws-test-sg
+
+        - question_name: SSH Keypair
+          type: text
+          variable: create_vm_aws_keypair_name
+          required: true
+          default: aws-test-key
+
+        - question_name: AWS Instance Type (blank uses the default)
+          type: text
+          variable: create_vm_aws_instance_size
+          required: false
+          default: ''
+
+        - question_name: AWS Image Filter (blank uses the default)
+          type: text
+          variable: create_vm_aws_image_filter
+          required: false
+          default: ''
+
+        - question_name: Pin an AMI (blank discovers the newest)
+          question_description: >-
+            Set this to skip AMI discovery entirely.
+          type: text
+          variable: create_vm_aws_instance_ami
+          required: false
+          default: ''
+
+    simplified_workflow_nodes:
+      - identifier: Open Ticket
+        unified_job_template: "ServiceNow | Provision and Patch | Open Ticket"
+        success_nodes:
+          - Provision EC2
+
+      - identifier: Provision EC2
+        unified_job_template: "ServiceNow | Provision and Patch | Provision EC2 Instance"
+        success_nodes:
+          - Patch Instance
+        failure_nodes:
+          - Escalate
+
+      - identifier: Patch Instance
+        unified_job_template: "ServiceNow | Provision and Patch | Patch EC2 Instance"
+        success_nodes:
+          - Reboot and Verify
+        failure_nodes:
+          - Escalate
+
+      - identifier: Reboot and Verify
+        unified_job_template: "ServiceNow | Provision and Patch | Reboot and Verify"
+        success_nodes:
+          - Close Ticket
+        failure_nodes:
+          - Escalate
+
+      - identifier: Close Ticket
+        unified_job_template: "ServiceNow | Provision and Patch | Close Ticket"
+        failure_nodes:
+          - Escalate
+
+      - identifier: Escalate
+        unified_job_template: "ServiceNow | Provision and Patch | Escalate Ticket"
 
   #############################
   # Windows Workflows
