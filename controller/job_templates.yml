@@ -762,7 +762,7 @@ controller_templates:
     credentials:
       - Windows
     project: "Personal | AAP Demos"
-    playbook: playbooks/windows/disa_stig.yml
+    playbook: playbooks/windows/windows_stig.yml
     execution_environment: Product Demos EE (2.7)
     labels: ['windows', 'security', 'casc']
     inventory: Home Lab
