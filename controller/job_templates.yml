@@ -593,6 +593,19 @@ controller_templates:
     ask_variables_on_launch: true
     inventory: Home Lab
 
+  - name: ServiceNow | Provision and Patch | Teardown
+    description: "Teardown the provisioned EC2 instance."
+    job_type: run
+    organization: Default
+    credentials:
+      - ServiceNow (Dev)
+    project: "Personal | AAP Demos"
+    playbook: playbooks/itsm/snow_pp_teardown.yml
+    execution_environment: ServiceNow EE
+    labels: ['casc', 'itsm']
+    ask_variables_on_launch: true
+    inventory: Home Lab
+
   - name: ServiceNow | Update Incident Ticket
     description: "Update a previously created indcident ticket."
     job_type: run

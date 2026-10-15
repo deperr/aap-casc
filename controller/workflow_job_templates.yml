@@ -258,6 +258,21 @@ controller_workflows:
 
       - identifier: Close Ticket
         unified_job_template: "ServiceNow | Provision and Patch | Close Ticket"
+        success_nodes:
+          - Approve Teardown
+        failure_nodes:
+          - Escalate
+
+      - identifier: Approve Teardown
+        approval_node:
+          name: ServiceNow | Provision and Patch | Approve Teardown
+          description: Approve to tear down the provisioned EC2 instance.
+          timeout: 900
+        success_nodes:
+          - Teardown
+
+      - identifier: Teardown
+        unified_job_template: "ServiceNow | Provision and Patch | Teardown"
         failure_nodes:
           - Escalate
 
