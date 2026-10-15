@@ -702,7 +702,6 @@ controller_templates:
           default: present
           min: 0
           max: 1024
-          new_question: true
         - question_name: "Classification Level"
           question_description: "Predefined classification marking. Choose CUSTOM to specify your own text and colors."
           required: true
@@ -719,7 +718,6 @@ controller_templates:
           default: UNCLASSIFIED
           min: 0
           max: 1024
-          new_question: true
         - question_name: "Custom Banner Text"
           question_description: "Text displayed on the banner (only used when Classification Level is CUSTOM)"
           required: false
@@ -728,7 +726,6 @@ controller_templates:
           default: ""
           min: 0
           max: 1024
-          new_question: true
         - question_name: "Banner Position"
           question_description: "Display the banner at the top of the screen only, or at both top and bottom"
           required: true
@@ -740,7 +737,6 @@ controller_templates:
           default: top
           min: 0
           max: 1024
-          new_question: true
         - question_name: "Background Color"
           question_description: "Banner background color as hex code (only used when Classification Level is CUSTOM)"
           required: false
@@ -749,7 +745,6 @@ controller_templates:
           default: "#007A33"
           min: 4
           max: 7
-          new_question: true
         - question_name: "Text Color"
           question_description: "Banner text/foreground color as hex code (only used when Classification Level is CUSTOM)"
           required: false
@@ -758,7 +753,6 @@ controller_templates:
           default: "#FFFFFF"
           min: 4
           max: 7
-          new_question: true
 
   - name: Windows | DISA STIG
     description: "Apply STIG hardening baseline."
